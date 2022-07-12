@@ -25,8 +25,9 @@ def cash_redis(func):
     """
 
     def wrapper(*args):
-        res = int(redis_client.get(name=str(*args)))
-        if not res:
+        if redis_client.exists(str(*args)):
+            res = int(redis_client.get(name=str(*args)))
+        else:
             res = func(*args)
             redis_client.set(name=str(*args), value=res)
         return res
