@@ -1,5 +1,6 @@
 import redis
 
+
 def cash_result(func):
     """
     функция-декоратор сохраняет (кэширует) результат декорируемой функции
@@ -41,11 +42,10 @@ def multiplier2(number: int):
 
 
 if __name__ == "__main__":
-    # [print(multiplier(i)) for i in range(5)]
-    # [print(multiplier(i)) for i in range(5)]
+    [print(multiplier(i)) for i in range(5)]
+    [print(multiplier(i)) for i in range(5)]
 
     redis_client = redis.Redis(host="localhost", port=6379, db=0)
     [print(multiplier2(i)) for i in range(5)]
     [print(multiplier2(i)) for i in range(5)]
     redis_client.close()
-

@@ -26,7 +26,7 @@ def repeat(call_count: int, start_sleep_time: int, factor: int, border_sleep_tim
                 print(
                     f"Запуск номер {exec_count}. Ожидание: {sleep_time} секунд. Результат декорируемой функций = {res}."
                 )
-                sleep_time *= 2 ** factor
+                sleep_time *= factor
             print("Конец работы")
             return
 
@@ -35,7 +35,7 @@ def repeat(call_count: int, start_sleep_time: int, factor: int, border_sleep_tim
     return decorator
 
 
-@repeat(call_count=5, start_sleep_time=1, factor=1, border_sleep_time=10)
+@repeat(call_count=5, start_sleep_time=1, factor=2, border_sleep_time=60)
 def multiplier():
     return time.time()
 
